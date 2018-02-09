@@ -51,8 +51,8 @@ Maven:
 You can attach it to RecyclerView from code or XML layout.
 
 Here are the attributes you can specify in the constructor or XML layout:
-* `activeCardLeft` - Active card offset from start of RecyclerView. Default value is 50dp.
-* `cardWidth` - Card width. Default value is 148dp.
+* `activeCardTop` - Active card offset from start of RecyclerView. Default value is 50dp.
+* `cardHeight` - Card width. Default value is 148dp.
 * `cardsGap` - Distance between cards. Default value is 12dp.
 
 For card snapping, there is `CardSnapHelper` class.'

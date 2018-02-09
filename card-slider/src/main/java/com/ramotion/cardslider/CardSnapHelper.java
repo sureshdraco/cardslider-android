@@ -66,15 +66,15 @@ public class CardSnapHelper extends LinearSnapHelper {
         int deltaJump;
 
         if (distance > 0) {
-            deltaJump = (int) Math.floor(distance / lm.getCardWidth());
+            deltaJump = (int) Math.floor(distance / lm.getCardHeight());
         } else {
-            deltaJump = (int) Math.ceil(distance / lm.getCardWidth());
+            deltaJump = (int) Math.ceil(distance / lm.getCardHeight());
         }
 
         final int deltaSign = Integer.signum(deltaJump);
         deltaJump = deltaSign * Math.min(3, Math.abs(deltaJump));
 
-        if (vectorForEnd.x < 0) {
+        if (vectorForEnd.y < 0) {
             deltaJump = -deltaJump;
         }
 
@@ -105,22 +105,22 @@ public class CardSnapHelper extends LinearSnapHelper {
                                               @NonNull View targetView)
     {
         final CardSliderLayoutManager lm = (CardSliderLayoutManager)layoutManager;
-        final int viewLeft = lm.getDecoratedLeft(targetView);
-        final int activeCardLeft = lm.getActiveCardLeft();
-        final int activeCardCenter = lm.getActiveCardLeft() + lm.getCardWidth() / 2;
-        final int activeCardRight = lm.getActiveCardLeft() + lm.getCardWidth();
+        final int viewTop = lm.getDecoratedTop(targetView);
+        final int activeCardTop = lm.getActiveCardTop();
+        final int activeCardCenter = lm.getActiveCardTop() + lm.getCardHeight() / 2;
+        final int activeCardBottom = lm.getActiveCardTop() + lm.getCardHeight();
 
         int[] out = new int[] {0, 0};
-        if (viewLeft < activeCardCenter) {
+        if (viewTop < activeCardCenter) {
             final int targetPos = lm.getPosition(targetView);
             final int activeCardPos = lm.getActiveCardPosition();
             if (targetPos != activeCardPos) {
-                out[0] = -(activeCardPos - targetPos) * lm.getCardWidth();
+                out[0] = -(activeCardPos - targetPos) * lm.getCardHeight();
             } else {
-                out[0] = viewLeft - activeCardLeft;
+                out[0] = viewTop - activeCardTop;
             }
         } else {
-            out[0] = viewLeft - activeCardRight + 1;
+            out[0] = viewTop - activeCardBottom + 1;
         }
 
         if (out[0] != 0) {

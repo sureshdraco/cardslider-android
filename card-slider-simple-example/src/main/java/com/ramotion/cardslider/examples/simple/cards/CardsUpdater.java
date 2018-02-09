@@ -31,7 +31,7 @@ public class CardsUpdater extends DefaultViewUpdater {
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
             final CardSliderLayoutManager lm =  getLayoutManager();
-            final float ratio = (float) lm.getDecoratedLeft(view) / lm.getActiveCardLeft();
+            final float ratio = (float) lm.getDecoratedLeft(view) / lm.getActiveCardTop();
 
             final float z;
 
@@ -42,7 +42,7 @@ public class CardsUpdater extends DefaultViewUpdater {
             } else if (position < 1f) {
                 z = Z_CENTER_2;
             } else {
-                z = Z_RIGHT;
+                z = Z_BOTTOM;
             }
 
             card.setCardElevation(Math.max(0, z));
